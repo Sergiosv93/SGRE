@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SGRE.Application
+namespace SGRE.Domain.Interfaces
 {
-    public class Class1
+    public interface INotificador
     {
+        void Notificar(int clienteId, string mensaje);
     }
 }

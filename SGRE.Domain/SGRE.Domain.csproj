@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>399c1b96-86c4-41e6-bdb9-9a9a38535a4d</ProjectGuid>
+    <ProjectGuid>{399C1B96-86C4-41E6-BDB9-9A9A38535A4D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SGRE.Domain</RootNamespace>
@@ -31,24 +31,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Chofer.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Envio.cs" />
+    <Compile Include="Entities\EstatusHistorial.cs" />
+    <Compile Include="Entities\Vehiculo.cs" />
+    <Compile Include="Enums\EstatusEnvio.cs" />
+    <Compile Include="Interfaces\INotificador.cs" />
+    <Compile Include="Interfaces\IRepositorio.cs" />
+    <Compile Include="Interfaces\IRepositorioChofer.cs" />
+    <Compile Include="Interfaces\IRepositorioCliente.cs" />
+    <Compile Include="Interfaces\IRepositorioEnvio.cs" />
+    <Compile Include="Interfaces\IRepositorioVehiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
