@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SGRE.Domain.Entities.Envio>
+
+@{
+    ViewBag.Title = "Envíos";
+}
+
+<h2>Envíos registrados</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success">@TempData["Mensaje"]</div>
+}
+
+<p>@Html.ActionLink("Registrar nuevo envío", "Crear", null, new { @class = "btn btn-primary" })</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Estatus</th>
+            <th>Fecha creación</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var envio in Model)
+        {
+            <tr>
+                <td>@envio.Id</td>
+                <td>@envio.Cliente?.Nombre</td>
+                <td>@envio.OrigenDireccion</td>
+                <td>@envio.DestinoDireccion</td>
+                <td>@envio.Estatus</td>
+                <td>@envio.FechaCreacion.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@Html.ActionLink("Ver detalle", "Detalle", new { id = envio.Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>
