@@ -139,6 +139,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Documents\EvidenciaEntrega.cs" />
     <Compile Include="Entities\Chofer.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Envio.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Interfaces\IRepositorioChofer.cs" />
     <Compile Include="Interfaces\IRepositorioCliente.cs" />
     <Compile Include="Interfaces\IRepositorioEnvio.cs" />
+    <Compile Include="Interfaces\IRepositorioEvidencia.cs" />
     <Compile Include="Interfaces\IRepositorioVehiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

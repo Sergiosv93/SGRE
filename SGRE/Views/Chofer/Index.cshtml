@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SGRE.Domain.Entities.Chofer>
+
+@{
+    ViewBag.Title = "Choferes";
+}
+
+<h2>Choferes</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success">@TempData["Mensaje"]</div>
+}
+
+<p>@Html.ActionLink("Registrar nuevo chofer", "Crear", null, new { @class = "btn btn-primary" })</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Licencia</th>
+            <th>Teléfono de emergencia</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var chofer in Model)
+        {
+            <tr>
+                <td>@chofer.Id</td>
+                <td>@chofer.Nombre</td>
+                <td>@chofer.Licencia</td>
+                <td>@chofer.TelefonoEmergencia</td>
+            </tr>
+        }
+    </tbody>
+</table>

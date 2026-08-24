@@ -1,0 +1,29 @@
+﻿@model SGRE.Domain.Entities.Vehiculo
+
+@{
+    ViewBag.Title = "Registrar vehículo";
+}
+
+<h2>Registrar nuevo vehículo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Placa</label>
+        @Html.TextBoxFor(m => m.Placa, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Tipo</label>
+        @Html.TextBoxFor(m => m.Tipo, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Capacidad</label>
+        @Html.TextBoxFor(m => m.Capacidad, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Registrar</button>
+}

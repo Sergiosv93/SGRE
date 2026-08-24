@@ -8,7 +8,7 @@
 
 <dl class="dl-horizontal">
     <dt>Cliente</dt>
-    <dd>@Model.Cliente?.Nombre</dd>
+    <dd>@(Model.Cliente?.Nombre)</dd>
 
     <dt>Origen</dt>
     <dd>@Model.OrigenDireccion</dd>
@@ -39,4 +39,29 @@
     </div>
 
     <button type="submit" class="btn btn-warning">Actualizar estatus</button>
+}
+
+<hr />
+<h4>Evidencia de entrega</h4>
+
+@if (ViewBag.Evidencia != null)
+{
+    var evidencia = (SGRE.Domain.Documents.EvidenciaEntrega)ViewBag.Evidencia;
+    <p><strong>Notas:</strong> @evidencia.Notas</p>
+    <p><strong>Fecha:</strong> @evidencia.Fecha.ToString("dd/MM/yyyy HH:mm")</p>
+}
+else
+{
+    using (Html.BeginForm("RegistrarEvidencia", "Envio"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("envioId", Model.Id)
+
+        <div class="form-group">
+            <label>Notas de entrega</label>
+            <textarea name="notas" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-info">Registrar evidencia</button>
+    }
 }

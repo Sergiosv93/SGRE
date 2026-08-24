@@ -10,6 +10,7 @@ namespace SGRE.Controllers
         private readonly IClienteService _clienteService;
         private readonly IChoferService _choferService;
         private readonly IVehiculoService _vehiculoService;
+        private readonly IEvidenciaService _evidenciaService;
 
         // Unity resuelve automáticamente estas 4 dependencias al crear el Controller
         public EnvioController(
@@ -58,6 +59,7 @@ namespace SGRE.Controllers
         public ActionResult Detalle(int id)
         {
             var envio = _envioService.ObtenerPorId(id);
+            ViewBag.Evidencia = _evidenciaService.ObtenerPorEnvio(id);
             return View(envio);
         }
 
@@ -76,6 +78,36 @@ namespace SGRE.Controllers
             ViewBag.Clientes = new SelectList(_clienteService.ObtenerTodos(), "Id", "Nombre");
             ViewBag.Choferes = new SelectList(_choferService.ObtenerTodos(), "Id", "Nombre");
             ViewBag.Vehiculos = new SelectList(_vehiculoService.ObtenerTodos(), "Id", "Placa");
+        }
+
+        public EnvioController(
+            IEnvioService envioService,
+            IClienteService clienteService,
+            IChoferService choferService,
+            IVehiculoService vehiculoService,
+            IEvidenciaService evidenciaService) // <- nuevo parámetro
+            {
+                _envioService = envioService;
+                _clienteService = clienteService;
+                _choferService = choferService;
+                _vehiculoService = vehiculoService;
+                _evidenciaService = evidenciaService; // <- nuevo
+            }
+
+        // POST: Envio/RegistrarEvidencia
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegistrarEvidencia(int envioId, string notas)
+        {
+            var evidencia = new SGRE.Domain.Documents.EvidenciaEntrega
+            {
+                EnvioId = envioId,
+                Notas = notas
+            };
+
+            _evidenciaService.RegistrarEvidencia(evidencia);
+            TempData["Mensaje"] = "Evidencia registrada correctamente";
+            return RedirectToAction("Detalle", new { id = envioId });
         }
     }
 }

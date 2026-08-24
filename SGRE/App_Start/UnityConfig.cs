@@ -2,12 +2,15 @@ using SGRE.Application.Interfaces;
 using SGRE.Application.Services;
 using SGRE.Domain.Interfaces;
 using SGRE.Infrastructure.Data;
+using SGRE.Infrastructure.Mongo;
 using SGRE.Infrastructure.Notificaciones;
 using SGRE.Infrastructure.Repositories;
 using System.Web.Mvc;
 using Unity;
+using Unity.Injection;
 using Unity.Lifetime;
 using Unity.Mvc5;
+using System.Configuration;
 
 namespace SGRE.Web
 {
@@ -34,6 +37,16 @@ namespace SGRE.Web
             container.RegisterType<IVehiculoService, VehiculoService>();
             container.RegisterType<IChoferService, ChoferService>();
             container.RegisterType<IEnvioService, EnvioService>();
+
+            // MongoDB
+            container.RegisterType<MongoContext>(new InjectionFactory(c =>
+                new MongoContext(
+                    ConfigurationManager.AppSettings["MongoConnectionString"],
+                    ConfigurationManager.AppSettings["MongoDatabaseName"]
+                )));
+
+            container.RegisterType<IRepositorioEvidencia, RepositorioEvidencia>();
+            container.RegisterType<IEvidenciaService, EvidenciaService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

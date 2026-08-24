@@ -1,0 +1,29 @@
+﻿@model SGRE.Domain.Entities.Chofer
+
+@{
+    ViewBag.Title = "Registrar chofer";
+}
+
+<h2>Registrar nuevo chofer</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Nombre</label>
+        @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Licencia</label>
+        @Html.TextBoxFor(m => m.Licencia, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Teléfono de emergencia</label>
+        @Html.TextBoxFor(m => m.TelefonoEmergencia, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Registrar</button>
+}

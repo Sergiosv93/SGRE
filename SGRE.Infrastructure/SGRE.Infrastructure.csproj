@@ -164,6 +164,7 @@
     <Compile Include="Repositories\RepositorioChofer.cs" />
     <Compile Include="Repositories\RepositorioCliente.cs" />
     <Compile Include="Repositories\RepositorioEnvio.cs" />
+    <Compile Include="Repositories\RepositorioEvidencia.cs" />
     <Compile Include="Repositories\RepositorioVehiculo.cs" />
   </ItemGroup>
   <ItemGroup>
